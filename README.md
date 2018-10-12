@@ -10,9 +10,13 @@
 
 # Run
 
+在项目目录下运行：
+
 ```shell
 $ scrapy crawl area_spider
 ```
+
+运行完成后，数据将保存在项目根目录area.xlsx文件中。
 
 # Authors
 - [Yinwei Li](https://github.com/liyinwei)
