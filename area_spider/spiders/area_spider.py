@@ -27,7 +27,6 @@ class AreaSpider(Spider):
         :return:
         """
         for sel in response.xpath('//tr[@class="provincetr"]/td/a'):
-            self.log(sel.xpath('td[1]/text()').extract())
             item = AreaSpiderItem()
             item['code'] = sel.xpath('@href').extract()[0].split('.')[0] + '0000000000'
             item['name'] = sel.xpath('text()').extract()[0].strip()
@@ -52,8 +51,8 @@ class AreaSpider(Spider):
             item['cls'] = ''
             yield item
 
-        # for href in response.xpath('//tr[@class="citytr"]/td[1]/a/@href'):
-        #     yield response.follow(href, self.parse_county)
+        for href in response.xpath('//tr[@class="citytr"]/td[1]/a/@href'):
+            yield response.follow(href, self.parse_county)
 
     def parse_county(self, response):
         """
